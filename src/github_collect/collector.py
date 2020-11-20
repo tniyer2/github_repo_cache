@@ -59,3 +59,4 @@ def update_redis(github, last_update):
 
 if __name__ == '__main__':
     collect()
+
