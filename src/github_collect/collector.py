@@ -14,7 +14,7 @@ from github_collect.github_stats import make_repo_stats
 load_dotenv()
 r = Redis()
 
-repos = ['MoravianCollege/capstone2020']
+repos = ['tniyer2/github_repo_cache']
 DELAY_SECONDS = 5 * 60
 
 

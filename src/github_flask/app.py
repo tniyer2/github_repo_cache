@@ -10,7 +10,7 @@ def create_app():
 
     @app.route('/commits')
     def get_commits():
-        value = r.get('MoravianCollege/capstone2020').decode('utf-8')
+        value = r.get('tniyer2/github_repo_cache').decode('utf-8')
         dict_of_user_values = json.loads(value)
         commits = list(zip(dict_of_user_values['names'], dict_of_user_values['commits']))
         return jsonify({'commits': commits}), 200
