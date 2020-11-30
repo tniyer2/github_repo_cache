@@ -3,3 +3,4 @@ redis==3.5.3
 Flask==1.1.2
 PyGithub==1.53
 python-dotenv==0.15.0
+requests==2.24.0

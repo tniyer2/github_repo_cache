@@ -14,8 +14,8 @@ from github_collect.github_stats import make_repo_stats
 load_dotenv()
 r = Redis()
 
-repos = ['tniyer2/github_repo_cache']
-DELAY_SECONDS = 5 * 60
+repos = [os.environ['GITHUB_REPO']]
+DELAY_SECONDS = 30
 
 
 def make_hour_minute_time_string(timestamp):
@@ -59,4 +59,3 @@ def update_redis(github, last_update):
 
 if __name__ == '__main__':
     collect()
-

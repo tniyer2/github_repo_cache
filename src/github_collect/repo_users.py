@@ -6,6 +6,7 @@ class RepoStats:
     def __init__(self, repo_name):
         self.repo_name = repo_name
         self.users = {}
+        self.branches = []
 
     def get_repo_name(self):
         return self.repo_name
@@ -34,6 +35,9 @@ class RepoStats:
         self._add_user_if_missing(name)
         self.users[name].register_closed_pull_requests(num)
 
+    def register_branch(self, name):
+        self.branches.append(name)
+
     def get_dict_of_user_values(self):
         users_as_dicts = [u.as_dict() for u in self.users.values()]
         sorted_users = sorted(users_as_dicts, key=lambda u: u['name'])
@@ -50,4 +54,5 @@ class RepoStats:
                 'merges': merges,
                 'comments': comments,
                 'open_pull_requests': open_pull_requests,
-                'closed_pull_requests': closed_pull_requests}
+                'closed_pull_requests': closed_pull_requests,
+                'branches': self.branches}

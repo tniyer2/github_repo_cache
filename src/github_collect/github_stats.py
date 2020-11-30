@@ -7,11 +7,17 @@ def make_repo_stats(repo_name, github):
     repo = github.get_repo(repo_name)
     stats = RepoStats(repo_name)
 
+    _register_branches(repo, stats)
     _register_contributions(repo, stats)
-    _register_open_pull_requests(repo, stats)
-    #_register_closed_pull_requests(repo, stats)
+    # _register_open_pull_requests(repo, stats)
+    # _register_closed_pull_requests(repo, stats)
 
     return stats
+
+
+def _register_branches(repo, stats):
+    for b in repo.get_branches():
+        stats.register_branch(b.name)
 
 
 def _register_contributions(repo, stats):
@@ -25,6 +31,7 @@ def _register_open_pull_requests(repo, stats):
 
         for comment in pr.get_comments():
             stats.register_comments(get_name(comment.user), 1)
+
 
 def _register_closed_pull_requests(repo, stats):
     for pr in repo.get_pulls(state='closed'):
